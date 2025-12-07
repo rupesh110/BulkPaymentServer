@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\BulkPaymentServer.Application",
+    "\\BulkPaymentServer.Application\\Interfaces",
+    "\\BulkPaymentServer.Application\\Services",
+    "\\BulkPaymentServer.Domain",
+    "\\BulkPaymentServer.Domain\\Interfaces",
+    "\\BulkPaymentServer.Infrastructure",
+    "\\BulkPaymentServer.Infrastructure\\Persistence",
+    "\\BulkPaymentServer.Infrastructure\\Repositories",
+    "\\BulkPaymentServer.Infrastructure\\Services"
+  ],
+  "SelectedNode": "\\BulkPaymentServer.Application\\Services\\CsvProcessor.cs",
+  "PreviewInSolutionExplorer": false
+}

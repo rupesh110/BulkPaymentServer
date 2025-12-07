@@ -1,0 +1,15 @@
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\bin\Debug\net9.0\BulkPaymentServer.Application.deps.json
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\bin\Debug\net9.0\BulkPaymentServer.Application.dll
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\bin\Debug\net9.0\BulkPaymentServer.Application.pdb
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\bin\Debug\net9.0\BulkPaymentServer.Domain.dll
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\bin\Debug\net9.0\BulkPaymentServer.Domain.pdb
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\BulkPaymentServer.Application.csproj.AssemblyReference.cache
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\BulkPaymentServer.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\BulkPaymentServer.Application.AssemblyInfoInputs.cache
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\BulkPaymentServer.Application.AssemblyInfo.cs
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\BulkPaymentServer.Application.csproj.CoreCompileInputs.cache
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\BulkPaym.90A03920.Up2Date
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\BulkPaymentServer.Application.dll
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\refint\BulkPaymentServer.Application.dll
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\BulkPaymentServer.Application.pdb
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\ref\BulkPaymentServer.Application.dll
