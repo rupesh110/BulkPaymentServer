@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "qGVsoQCZWMk=",
+  "dgSpecHash": "Um6kq1Zl3Gg=",
   "success": true,
   "projectFilePath": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Application\\BulkPaymentServer.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rupes\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\10.0.0\\microsoft.extensions.dependencyinjection.10.0.0.nupkg.sha512",
-    "C:\\Users\\rupes\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.0\\microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512"
+    "C:\\Users\\rupes\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.0\\microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512",
+    "C:\\Users\\rupes\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.0\\microsoft.extensions.logging.abstractions.10.0.0.nupkg.sha512",
+    "C:\\Users\\rupes\\.nuget\\packages\\system.diagnostics.diagnosticsource\\10.0.0\\system.diagnostics.diagnosticsource.10.0.0.nupkg.sha512"
   ],
   "logs": []
 }

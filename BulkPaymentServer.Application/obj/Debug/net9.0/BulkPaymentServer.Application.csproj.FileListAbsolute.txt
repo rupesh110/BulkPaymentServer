@@ -8,6 +8,7 @@ C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\ob
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\BulkPaymentServer.Application.AssemblyInfoInputs.cache
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\BulkPaymentServer.Application.AssemblyInfo.cs
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\BulkPaymentServer.Application.csproj.CoreCompileInputs.cache
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\BulkPaymentServer.Application.sourcelink.json
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\BulkPaym.90A03920.Up2Date
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\BulkPaymentServer.Application.dll
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Application\obj\Debug\net9.0\refint\BulkPaymentServer.Application.dll
