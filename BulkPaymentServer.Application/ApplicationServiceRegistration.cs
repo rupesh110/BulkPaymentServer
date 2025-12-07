@@ -10,7 +10,9 @@ public static class ApplicationServiceRegistration
 	public static IServiceCollection AddApplicationServices(this IServiceCollection services)
 	{
 		services.AddScoped<ICsvProcessor, CsvProcessor>();
+        services.AddScoped<IUploadService, UploadService>();
 
-		return services;
+
+        return services;
 	}
 }

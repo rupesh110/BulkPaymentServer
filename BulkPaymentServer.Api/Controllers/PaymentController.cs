@@ -8,13 +8,13 @@ namespace BulkPaymentServer.Api.Controllers;
 [Route("api")]
 public class PaymentController : ControllerBase
 {
-    private readonly ICsvProcessor _csvProcessor;
+    private readonly IUploadService _uploadService;
     private readonly ILogger<PaymentController> _logger;
 
 
-    public PaymentController(ICsvProcessor csvProcessor, ILogger<PaymentController> logger)
+    public PaymentController(IUploadService uploadService, ILogger<PaymentController> logger)
     {
-       _csvProcessor = csvProcessor;
+        _uploadService = uploadService;
         _logger = logger;
     }
 
@@ -32,22 +32,14 @@ public class PaymentController : ControllerBase
             return BadRequest("No file uploaded.");
         }
 
-        using var reader = new StreamReader(file.OpenReadStream());
-        var csvContent = await reader.ReadToEndAsync();
+        var userId = "123"; //TODO: Get from auth later
 
-        try
-        {
-            var payments = await _csvProcessor.ProcessCsvAsync(csvContent);
-            return Ok(new
-            {
-                message = "File uploaded successfully",
-                length = csvContent.Length
-            });
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error processing CSV file.");
-            return StatusCode(500, "Error Processgin csv file.");
-        }
+        using var stream = file.OpenReadStream();
+        var result = await _uploadService.UploadFileAsync(
+            userId,
+            stream,
+            file.FileName
+        );
+        return Ok(result);
     }
 }

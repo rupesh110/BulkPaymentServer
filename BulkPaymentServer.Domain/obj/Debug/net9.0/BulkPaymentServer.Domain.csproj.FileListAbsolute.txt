@@ -5,6 +5,7 @@ C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Domain\obj\Deb
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Domain\obj\Debug\net9.0\BulkPaymentServer.Domain.AssemblyInfoInputs.cache
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Domain\obj\Debug\net9.0\BulkPaymentServer.Domain.AssemblyInfo.cs
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Domain\obj\Debug\net9.0\BulkPaymentServer.Domain.csproj.CoreCompileInputs.cache
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Domain\obj\Debug\net9.0\BulkPaymentServer.Domain.sourcelink.json
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Domain\obj\Debug\net9.0\BulkPaymentServer.Domain.dll
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Domain\obj\Debug\net9.0\refint\BulkPaymentServer.Domain.dll
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Domain\obj\Debug\net9.0\BulkPaymentServer.Domain.pdb
