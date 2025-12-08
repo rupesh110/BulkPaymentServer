@@ -5,5 +5,5 @@ namespace BulkPaymentServer.Application.Interfaces;
 
 public interface IUploadService
 {
-    Task<UploadResult> UploadFileAsync(string userId, Stream fileStream, string fileName);
+    Task<UploadResultDto> UploadFileAsync(string userId, Stream fileStream, string fileName);
 }

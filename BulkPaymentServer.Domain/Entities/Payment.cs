@@ -3,18 +3,33 @@ namespace BulkPaymentServer.Domain.Entities;
 public class Payment
 {
     public Guid Id { get; private set; }
-    public int InvoiceId { get; private set; }
+    public Guid UploadId { get; set; }
+    public Upload Upload { get; private set; } 
+    public int InvoiceNumber { get; private set; }
+    public string RecipientName { get; private set; } = string.Empty;
+    public string RecipientBsb { get; private set; } = string.Empty;
     public string RecipientAccount { get; private set; } = string.Empty;
     public string Currency { get; private set; } = string.Empty;
     public decimal Amount { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public string Status { get; private set; } = "Pending";
 
-    public Payment(int invoiceId, string recipientAccount, string currency, decimal amount)
+    public Payment(
+        int invoiceNumber, 
+        string recipientName,
+        string recipientBsb,
+        string recipientAccount, 
+        string currency, 
+        decimal amount)
     {
-        if (invoiceId <= 0) 
+        if (invoiceNumber <= 0) 
         {
-            throw new ArgumentException("InvoiceId must be positive Integer.", nameof(invoiceId));
+            throw new ArgumentException("InvoiceId must be positive Integer.", nameof(invoiceNumber));
+        }
+
+        if (string.IsNullOrWhiteSpace(recipientName))
+        {
+            throw new ArgumentException("RecipientName must be provided.", nameof(recipientName));
         }
 
         if (string.IsNullOrWhiteSpace(recipientAccount))
@@ -33,7 +48,9 @@ public class Payment
         }
 
         Id = Guid.NewGuid();
-        InvoiceId = invoiceId;
+        InvoiceNumber = invoiceNumber;
+        RecipientName = recipientName;
+        RecipientBsb = recipientBsb;
         RecipientAccount = recipientAccount;
         Currency = currency;
         Amount = amount;
@@ -41,5 +58,9 @@ public class Payment
         Status = "Pending";
     }
 
+    public void SetUpload(Guid uploadId)
+    {
+        UploadId = uploadId;
+    }
     private Payment() { }
 }
