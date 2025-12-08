@@ -1,36 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Application\\Services\\CsvProcessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BulkPaymentServer.Application\\Services\\CsvProcessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Application\\ApplicationServiceRegistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BulkPaymentServer.Application\\ApplicationServiceRegistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Application\\Interfaces\\ICsvProcessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BulkPaymentServer.Application\\Interfaces\\ICsvProcessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Application\\Interfaces\\ICsvParser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BulkPaymentServer.Application\\Interfaces\\ICsvParser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Infrastructure\\Services\\CsvParser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BulkPaymentServer.Infrastructure\\Services\\CsvParser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Infrastructure\\InfrastructureServiceRegistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BulkPaymentServer.Infrastructure\\InfrastructureServiceRegistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Api\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BulkPaymentServer.Api\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -38,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 183,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -59,103 +30,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "InfrastructureServiceRegistration.cs",
-              "DocumentMoniker": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Infrastructure\\InfrastructureServiceRegistration.cs",
-              "RelativeDocumentMoniker": "BulkPaymentServer.Infrastructure\\InfrastructureServiceRegistration.cs",
-              "ToolTip": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Infrastructure\\InfrastructureServiceRegistration.cs",
-              "RelativeToolTip": "BulkPaymentServer.Infrastructure\\InfrastructureServiceRegistration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T02:22:35.125Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Api\\Program.cs",
-              "RelativeDocumentMoniker": "BulkPaymentServer.Api\\Program.cs",
-              "ToolTip": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Api\\Program.cs",
-              "RelativeToolTip": "BulkPaymentServer.Api\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T02:21:31.989Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CsvParser.cs",
-              "DocumentMoniker": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Infrastructure\\Services\\CsvParser.cs",
-              "RelativeDocumentMoniker": "BulkPaymentServer.Infrastructure\\Services\\CsvParser.cs",
-              "ToolTip": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Infrastructure\\Services\\CsvParser.cs",
-              "RelativeToolTip": "BulkPaymentServer.Infrastructure\\Services\\CsvParser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T02:21:23.924Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ICsvProcessor.cs",
-              "DocumentMoniker": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Application\\Interfaces\\ICsvProcessor.cs",
-              "RelativeDocumentMoniker": "BulkPaymentServer.Application\\Interfaces\\ICsvProcessor.cs",
-              "ToolTip": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Application\\Interfaces\\ICsvProcessor.cs",
-              "RelativeToolTip": "BulkPaymentServer.Application\\Interfaces\\ICsvProcessor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T02:21:02.317Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ICsvParser.cs",
-              "DocumentMoniker": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Application\\Interfaces\\ICsvParser.cs",
-              "RelativeDocumentMoniker": "BulkPaymentServer.Application\\Interfaces\\ICsvParser.cs",
-              "ToolTip": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Application\\Interfaces\\ICsvParser.cs",
-              "RelativeToolTip": "BulkPaymentServer.Application\\Interfaces\\ICsvParser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T02:19:12.02Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CsvProcessor.cs",
-              "DocumentMoniker": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Application\\Services\\CsvProcessor.cs",
-              "RelativeDocumentMoniker": "BulkPaymentServer.Application\\Services\\CsvProcessor.cs",
-              "ToolTip": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Application\\Services\\CsvProcessor.cs",
-              "RelativeToolTip": "BulkPaymentServer.Application\\Services\\CsvProcessor.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAUwBcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T02:18:16.891Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ApplicationServiceRegistration.cs",
-              "DocumentMoniker": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Application\\ApplicationServiceRegistration.cs",
-              "RelativeDocumentMoniker": "BulkPaymentServer.Application\\ApplicationServiceRegistration.cs",
-              "ToolTip": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Application\\ApplicationServiceRegistration.cs",
-              "RelativeToolTip": "BulkPaymentServer.Application\\ApplicationServiceRegistration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T02:21:59.712Z",
-              "EditorCaption": ""
             }
           ]
         }
