@@ -7,7 +7,7 @@ This project demonstrates domain-driven design (DDD), layered architecture, and 
 
 ---
 
-## 🚀 Features
+## Features
 
 ### **1. CSV Upload & Processing**
 - Accepts payment CSV files via REST API.
@@ -150,7 +150,7 @@ dotnet ef database update -p BulkPaymentServer.Infrastructure -s BulkPaymentServ
 
 ---
 
-## ▶️ Running the API
+## Running the API
 
 ```bash
 dotnet watch run --project BulkPaymentServer.Api
@@ -166,7 +166,7 @@ Use Postman or Swagger UI to upload CSVs.
 
 ---
 
-## 🛠 Technologies Used
+## Technologies Used
 - .NET 9
 - Entity Framework Core 9 (Preview)
 - Azure SQL Database
