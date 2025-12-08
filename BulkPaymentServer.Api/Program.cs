@@ -1,11 +1,15 @@
 using Azure.Identity;
 using Azure.Extensions.AspNetCore.Configuration.Secrets;
 using Serilog;
+
 using BulkPaymentServer.Application;
 using BulkPaymentServer.Infrastructure;
+using Microsoft.AspNetCore.Diagnostics;
+using BulkPaymentServer.Api.Middleware;
 
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Logging.ClearProviders();
 
 builder.Configuration.AddJsonFile("serilog.json", optional: false, reloadOnChange: true);
 
@@ -30,6 +34,7 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 app.UseSerilogRequestLogging();
+app.UseMiddleware<ExceptionMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {

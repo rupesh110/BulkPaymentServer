@@ -27,12 +27,13 @@ public class PaymentController : ControllerBase
     [HttpPost("upload")]
     public async Task<IActionResult> Upload(IFormFile file)
     {
+
         if (file == null || file.Length == 0)
         {
             return BadRequest("No file uploaded.");
         }
 
-        var userId = "123"; //TODO: Get from auth later
+        var userId = "User123"; //TODO: Get from auth later
 
         using var stream = file.OpenReadStream();
         var result = await _uploadService.UploadFileAsync(

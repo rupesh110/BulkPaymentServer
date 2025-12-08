@@ -1,6 +1,5 @@
 using System.IO;
 using System.Text.Json;
-
 using BulkPaymentServer.Domain.Entities;
 using BulkPaymentServer.Application.Interfaces;
 
@@ -8,12 +7,12 @@ namespace BulkPaymentServer.Infrastructure.Services;
 
 public class CsvParser : ICsvParser
 {
-    public List<Payment> Parse(string csvStream)
+    public List<Payment> Parse(string csvContent)
     {
         var payments = new List<Payment>();
-        using var reader = new StringReader(csvStream);
+        using var reader = new StringReader(csvContent);
 
-        // Read and skip header
+        // Skip header
         string? headerLine = reader.ReadLine();
 
         string? line;
@@ -24,14 +23,17 @@ public class CsvParser : ICsvParser
             if (rows.Length < 6)
                 continue;
 
-            // Parse CSV values
-            int invoiceId = int.Parse(rows[0]);
+            int invoiceNumber = int.Parse(rows[0]);
+            string recipientName = rows[1];
+            string recipientBsb = rows[2];
             string recipientAccount = rows[3];
             string currency = rows[4];
             decimal amount = decimal.Parse(rows[5]);
 
             var payment = new Payment(
-                invoiceId,
+                invoiceNumber,
+                recipientName,
+                recipientBsb,
                 recipientAccount,
                 currency,
                 amount
@@ -39,6 +41,7 @@ public class CsvParser : ICsvParser
 
             payments.Add(payment);
         }
+
         Console.WriteLine("CSV parsing completed.");
         Console.WriteLine(JsonSerializer.Serialize(payments));
 

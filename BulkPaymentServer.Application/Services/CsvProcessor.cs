@@ -18,7 +18,7 @@ public class CsvProcessor : ICsvProcessor
         var payments = _csvParser.Parse(csvStream);
 
 
-        Console.WriteLine("Starting CSV processing...");
+        Console.WriteLine("Starting CSV Ended...");
         return Task.FromResult(payments);
     }
 }

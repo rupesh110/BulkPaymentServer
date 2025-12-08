@@ -1,11 +1,13 @@
 namespace BulkPaymentServer.Application.DTOs;
 
-public class UploadResult
+public class UploadResultDto
 {
+    public Guid UploadId { get; set; }
     public string BlobUrl { get; }
+    public int TotalPayments { get; set; }
     public string Message { get; }
 
-    public UploadResult(string blobUrl, string message)
+    public UploadResultDto(string blobUrl, string message)
     {
         BlobUrl = blobUrl;
         Message = message;
