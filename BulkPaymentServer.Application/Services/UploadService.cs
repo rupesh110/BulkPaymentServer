@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using BulkPaymentServer.Application.Interfaces;
 using BulkPaymentServer.Application.DTOs;
 using BulkPaymentServer.Domain.Entities;
+using BulkPaymentServer.Application.Services;
 
 namespace BulkPaymentServer.Application.Services;
 
@@ -12,17 +13,20 @@ public class UploadService : IUploadService
     private readonly ILogger<UploadService> _logger;
     private readonly ICsvProcessor _csvProcessor;
     private readonly IPaymentRepository _paymentRepo;
+    private readonly UploadEventPublisher _uploadEventPublisher;
 
     public UploadService(
         IFileStorageService fileStorage,
         ILogger<UploadService> logger,
         ICsvProcessor csvProcessor,
-        IPaymentRepository paymentRepo)
+        IPaymentRepository paymentRepo,
+        UploadEventPublisher uploadEventPublisher)
     {
         _fileStorage = fileStorage;
         _logger = logger;
         _csvProcessor = csvProcessor;
         _paymentRepo = paymentRepo;
+        _uploadEventPublisher = uploadEventPublisher;
     }
 
     public async Task<UploadResultDto> UploadFileAsync(string userId, Stream fileStream, string fileName)
@@ -60,6 +64,13 @@ public class UploadService : IUploadService
 
         // 5. Save all payments
         await _paymentRepo.AddPaymentsAsync(paymentEntities);
+
+        // 6. Publish event for further processing
+        foreach (var payment in paymentEntities)
+        {
+            await _uploadEventPublisher.PublishUploadCreateAsync(upload.Id, payment);
+        }
+
 
         return new UploadResultDto(blobUrl, "File uploaded successfully")
         {

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BulkPaymentServer.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+900b5c2a0be4e1ab1544e1751e0a02a5d324fcd1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5355363ee65af90002c72b39edd8436076d7c439")]
 [assembly: System.Reflection.AssemblyProductAttribute("BulkPaymentServer.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BulkPaymentServer.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

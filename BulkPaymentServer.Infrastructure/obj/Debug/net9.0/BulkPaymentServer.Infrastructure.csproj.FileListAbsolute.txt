@@ -1,9 +1,3 @@
-C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\obj\Debug\net9.0\BulkPaymentServer.Infrastructure.csproj.AssemblyReference.cache
-C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\obj\Debug\net9.0\BulkPaymentServer.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\obj\Debug\net9.0\BulkPaymentServer.Infrastructure.AssemblyInfoInputs.cache
-C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\obj\Debug\net9.0\BulkPaymentServer.Infrastructure.AssemblyInfo.cs
-C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\obj\Debug\net9.0\BulkPaymentServer.Infrastructure.csproj.CoreCompileInputs.cache
-C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\obj\Debug\net9.0\BulkPaymentServer.Infrastructure.sourcelink.json
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\bin\Debug\net9.0\BulkPaymentServer.Infrastructure.deps.json
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\bin\Debug\net9.0\BulkPaymentServer.Infrastructure.runtimeconfig.json
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\bin\Debug\net9.0\BulkPaymentServer.Infrastructure.dll
@@ -12,6 +6,12 @@ C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\bin\Debug\net9.0\BulkPaymentServer.Domain.dll
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\bin\Debug\net9.0\BulkPaymentServer.Application.pdb
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\bin\Debug\net9.0\BulkPaymentServer.Domain.pdb
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\obj\Debug\net9.0\BulkPaymentServer.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\obj\Debug\net9.0\BulkPaymentServer.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\obj\Debug\net9.0\BulkPaymentServer.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\obj\Debug\net9.0\BulkPaymentServer.Infrastructure.AssemblyInfo.cs
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\obj\Debug\net9.0\BulkPaymentServer.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\obj\Debug\net9.0\BulkPaymentServer.Infrastructure.sourcelink.json
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\obj\Debug\net9.0\BulkPaym.B73E2CF9.Up2Date
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\obj\Debug\net9.0\BulkPaymentServer.Infrastructure.dll
 C:\Users\rupes\Project\csharp\BulkPaymentServer\BulkPaymentServer.Infrastructure\obj\Debug\net9.0\refint\BulkPaymentServer.Infrastructure.dll
