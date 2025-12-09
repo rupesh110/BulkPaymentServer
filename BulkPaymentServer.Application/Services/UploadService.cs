@@ -66,10 +66,11 @@ public class UploadService : IUploadService
         await _paymentRepo.AddPaymentsAsync(paymentEntities);
 
         // 6. Publish event for further processing
-        foreach (var payment in paymentEntities)
-        {
-            await _uploadEventPublisher.PublishUploadCreateAsync(upload.Id, payment);
-        }
+        var publishTasks = paymentEntities
+            .Select(payment => _uploadEventPublisher.PublishUploadCreateAsync(upload.Id, payment))
+            .ToList();
+
+        await Task.WhenAll(publishTasks);
 
 
         return new UploadResultDto(blobUrl, "File uploaded successfully")
