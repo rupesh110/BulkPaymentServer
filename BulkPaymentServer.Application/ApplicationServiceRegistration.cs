@@ -11,6 +11,7 @@ public static class ApplicationServiceRegistration
 	{
 		services.AddScoped<ICsvProcessor, CsvProcessor>();
         services.AddScoped<IUploadService, UploadService>();
+        services.AddScoped<UploadEventPublisher>();
 
 
         return services;

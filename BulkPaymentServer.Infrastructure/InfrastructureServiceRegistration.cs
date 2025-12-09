@@ -7,6 +7,7 @@ using BulkPaymentServer.Application.Interfaces;
 using BulkPaymentServer.Infrastructure.Services;
 using BulkPaymentServer.Infrastructure.Persistence;
 using BulkPaymentServer.Infrastructure.Repositories;
+using BulkPaymentServer.Infrastructure.Kafka;
 
 namespace BulkPaymentServer.Infrastructure;
 
@@ -22,6 +23,10 @@ public static class InfrastructureServiceRegistration
         //EF Core DbContext
         string dbConnectionString = configuration["SqlConnectionString"]; 
         Console.WriteLine("DB CONNECTION STRING = " + dbConnectionString);
+
+
+        //Kafka 
+        services.AddSingleton<IKafkaProducer, KafkaProducer>();
 
         services.AddDbContext<BulkPaymentDbContext>(options =>
             options.UseSqlServer(dbConnectionString));

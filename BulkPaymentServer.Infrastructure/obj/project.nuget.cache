@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3uOcXs2Ovgg=",
+  "dgSpecHash": "CGpy9yMyVp8=",
   "success": true,
   "projectFilePath": "C:\\Users\\rupes\\Project\\csharp\\BulkPaymentServer\\BulkPaymentServer.Infrastructure\\BulkPaymentServer.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,9 @@
     "C:\\Users\\rupes\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
     "C:\\Users\\rupes\\.nuget\\packages\\azure.storage.blobs\\12.26.0\\azure.storage.blobs.12.26.0.nupkg.sha512",
     "C:\\Users\\rupes\\.nuget\\packages\\azure.storage.common\\12.25.0\\azure.storage.common.12.25.0.nupkg.sha512",
+    "C:\\Users\\rupes\\.nuget\\packages\\confluent.kafka\\2.12.0\\confluent.kafka.2.12.0.nupkg.sha512",
     "C:\\Users\\rupes\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\rupes\\.nuget\\packages\\librdkafka.redist\\2.12.0\\librdkafka.redist.2.12.0.nupkg.sha512",
     "C:\\Users\\rupes\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
     "C:\\Users\\rupes\\.nuget\\packages\\microsoft.build.framework\\17.8.3\\microsoft.build.framework.17.8.3.nupkg.sha512",
     "C:\\Users\\rupes\\.nuget\\packages\\microsoft.build.locator\\1.7.8\\microsoft.build.locator.1.7.8.nupkg.sha512",
