@@ -1,16 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\BulkPaymentServer.Application",
-    "\\BulkPaymentServer.Application\\Interfaces",
-    "\\BulkPaymentServer.Application\\Services",
-    "\\BulkPaymentServer.Domain",
-    "\\BulkPaymentServer.Domain\\Interfaces",
-    "\\BulkPaymentServer.Infrastructure",
-    "\\BulkPaymentServer.Infrastructure\\Persistence",
-    "\\BulkPaymentServer.Infrastructure\\Repositories",
-    "\\BulkPaymentServer.Infrastructure\\Services"
+    "\\PaymentProcessor.Python",
+    "\\PaymentProcessor.Python\\app",
+    "\\PaymentProcessor.Python\\app\\config",
+    "\\PaymentProcessor.Python\\app\\kafka_client"
   ],
-  "SelectedNode": "\\BulkPaymentServer.Application\\Services\\CsvProcessor.cs",
+  "SelectedNode": "\\PaymentProcessor.Python\\app\\config\\settings.py",
   "PreviewInSolutionExplorer": false
 }
