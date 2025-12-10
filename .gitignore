@@ -69,6 +69,11 @@ ScaffoldingReadMe.txt
 # StyleCop
 StyleCopReport.xml
 
+# .NET build artifacts
+**/bin/
+**/obj/
+
+
 # Files built by Visual Studio
 *_i.c
 *_p.c
@@ -361,3 +366,15 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+
+# Ignore Python virtual env
+PaymentProcessor.Python/venv/
+
+# Python cache
+**/__pycache__/
+*.pyc
+
+# Environment files
+.env
+*.env

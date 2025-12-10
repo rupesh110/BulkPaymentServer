@@ -1,0 +1,1 @@
+from .keyvault_loader import load_settings
