@@ -15,7 +15,13 @@ def load_settings():
         "bootstrap_servers": secret_client.get_secret("Kafka-BootstrapServers").value,
         "sasl_username": secret_client.get_secret("Kafka-SaslUsername").value,
         "sasl_password": secret_client.get_secret("Kafka-SaslPassword").value,
+
+        #MAIN topic
         "topic": secret_client.get_secret("Kafka-TestTopic").value,
+
+        #Retry topics
+        "topic_retry1": secret_client.get_secret("Kafka-Retry1Topic").value,
+        "topic_retry2": secret_client.get_secret("Kafka-Retry2Topic").value,
     }
 
     return settings

@@ -1,16 +1,5 @@
 from kafka import KafkaConsumer
-import json
-
-
-def safe_json(message_bytes):
-    try:
-        return json.loads(message_bytes.decode("utf-8"))
-    except Exception as e:
-        return {
-            "_raw": message_bytes.decode("utf-8", errors="ignore"),
-            "_error": str(e)
-        }
-
+from utils import safe_json
 
 def create_consumer(settings):
     bootstrap_servers = settings["bootstrap_servers"]
@@ -28,6 +17,7 @@ def create_consumer(settings):
         auto_offset_reset="earliest",
         enable_auto_commit=True,
         value_deserializer=lambda m: safe_json(m),
+        group_id="bulkpayment-worker-main"
     )
 
     print(f"Kafka consumer connected to topic '{topic}'")
