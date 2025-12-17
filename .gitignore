@@ -374,6 +374,7 @@ PaymentProcessor.Python/venv/
 # Python cache
 **/__pycache__/
 *.pyc
+*./bin
 
 # Environment files
 .env

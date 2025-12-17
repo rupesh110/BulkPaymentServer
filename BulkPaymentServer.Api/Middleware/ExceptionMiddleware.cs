@@ -8,11 +8,16 @@ public class ExceptionMiddleware
 {
     private readonly RequestDelegate _next;
     private readonly ILogger<ExceptionMiddleware> _logger;
+    private readonly IWebHostEnvironment _env;
 
-    public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
+    public ExceptionMiddleware(
+        RequestDelegate next,
+        ILogger<ExceptionMiddleware> logger,
+        IWebHostEnvironment env)
     {
         _next = next;
         _logger = logger;
+        _env = env;
     }
 
     public async Task InvokeAsync(HttpContext context)
@@ -23,24 +28,21 @@ public class ExceptionMiddleware
         }
         catch (Exception ex)
         {
-            // Log full details only on server side
-            _logger.LogError(ex, "Unhandled exception occurred");
+            // Generate a correlation ID
+            var errorId = Guid.NewGuid().ToString();
 
-            // Return safe error response to client
-            await WriteSafeErrorResponseAsync(context);
+            // Log EVERYTHING internally
+            _logger.LogError(ex, "Unhandled exception | ErrorId: {ErrorId}", errorId);
+
+            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            context.Response.ContentType = "application/json";
+
+            // Response sent to client (SAFE)
+            await context.Response.WriteAsJsonAsync(new
+            {
+                error = "An unexpected error occurred.",
+                errorId
+            });
         }
-    }
-
-    private static Task WriteSafeErrorResponseAsync(HttpContext context)
-    {
-        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-        context.Response.ContentType = "application/json";
-
-        var response = new
-        {
-            message = "An unexpected error occurred. Please try again later."
-        };
-
-        return context.Response.WriteAsJsonAsync(response);
     }
 }

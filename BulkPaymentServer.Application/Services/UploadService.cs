@@ -38,7 +38,7 @@ public class UploadService : IUploadService
         var upload = new Upload(userId, fileName, blobUrl);
         await _paymentRepo.SaveUploadAsync(upload);
 
-        _logger.LogInformation("File uploaded. Upload record saved with id {UploadId}", upload.Id);
+        _logger.LogInformation("File uploaded. Upload record saved with id {UploadId}", upload.Id); //TODO: REMOVE
 
         // 3. Read CSV
         fileStream.Position = 0;

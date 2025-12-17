@@ -1,12 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\PaymentProcessor.Python",
-    "\\PaymentProcessor.Python\\app",
-    "\\PaymentProcessor.Python\\app\\config",
-    "\\PaymentProcessor.Python\\app\\kafka_client",
-    "\\PaymentProcessor.Python\\app\\services"
+    ""
   ],
-  "SelectedNode": "\\PaymentProcessor.Python\\app\\services\\payment_handler.py",
+  "SelectedNode": "\\docker-compose.yml",
   "PreviewInSolutionExplorer": false
 }
