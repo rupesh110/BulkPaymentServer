@@ -17,12 +17,10 @@ public static class InfrastructureServiceRegistration
     {
         //Blob Storage
         string connectionString = configuration["BlobStorageConnectionString"];
-        Console.WriteLine("BLOB CONNECTION STRING = " + connectionString);
         services.AddSingleton(new BlobServiceClient(connectionString));
 
         //EF Core DbContext
         string dbConnectionString = configuration["SqlConnectionString"]; 
-        Console.WriteLine("DB CONNECTION STRING = " + dbConnectionString);
 
 
         //Kafka 

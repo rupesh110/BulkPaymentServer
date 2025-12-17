@@ -16,7 +16,6 @@ public class AzureBlobStorageService : IFileStorageService
 
     public async Task<string> UploadFileAsync(string userId, Stream fileStream, string fileName)
     {
-        Console.WriteLine("AzureBlobStorageService UploadFileAsync called");
         var containerClient = _blobServiceClient.GetBlobContainerClient(ContainerName);
 
         await containerClient.CreateIfNotExistsAsync(PublicAccessType.None);

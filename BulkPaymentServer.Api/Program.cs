@@ -14,7 +14,16 @@ builder.Logging.ClearProviders();
 builder.Configuration.AddJsonFile("serilog.json", optional: false, reloadOnChange: true);
 
 var keyVaultUrl = builder.Configuration["KeyVaultUrl"];
-builder.Configuration.AddAzureKeyVault(new Uri(keyVaultUrl), new DefaultAzureCredential());
+
+if (
+    Uri.TryCreate(keyVaultUrl, UriKind.Absolute, out var vaultUri) 
+    && !builder.Environment.IsDevelopment()
+   )
+{
+    builder.Configuration.AddAzureKeyVault(
+        vaultUri,
+        new DefaultAzureCredential());
+}
 
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
