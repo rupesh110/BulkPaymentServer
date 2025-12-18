@@ -21,6 +21,10 @@ def load_settings():
             # Retry topics
             "topic_retry1": os.environ["Kafka__Retry1Topic"],
             "topic_retry2": os.environ["Kafka__Retry2Topic"],
+
+            # Dead-letter topic
+            "topic_deadletter": os.environ["Kafka__payment-dead"],
+            "topic_invalidPayments": os.environ["Kafka__payment-invalid"]
         }
 
     # AZURE / PROD MODE
@@ -43,4 +47,8 @@ def load_settings():
         # Retry topics
         "topic_retry1": secret_client.get_secret("Kafka-Retry1Topic").value,
         "topic_retry2": secret_client.get_secret("Kafka-Retry2Topic").value,
+
+        # Dead-letter topic
+        "topic_deadletter": secret_client.get_secret("Kafka-payment-dead").value,
+        "topic_invalidPayments": secret_client.get_secret("Kafka-payment-invalid").value
     }
