@@ -15,9 +15,10 @@ def create_consumer(settings):
         sasl_plain_username=api_key,
         sasl_plain_password=api_secret,
         auto_offset_reset="earliest",
-        enable_auto_commit=False,
+        enable_auto_commit=True,
         value_deserializer=lambda m: safe_json(m),
-        group_id="bulkpayment-worker-main"
+        group_id="bulkpayment-worker-main",
+        auto_commit_interval_ms=5000,
     )
 
     print(f"Kafka consumer connected to topic '{topic}'")
