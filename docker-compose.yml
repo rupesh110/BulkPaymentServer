@@ -1,15 +1,38 @@
 services:
   api:
-    image: bulkpaymentserver-api
+    build:
+      context: .
+      dockerfile: BulkPaymentServer.Api/Dockerfile
+    image: bulkpayment-server
+    container_name: bulkpayment-api
     ports:
       - "8080:8080"
     env_file:
       - .env
 
-  worker:
+  worker-main:
+    build:
+      context: PaymentProcessor.Python
+      dockerfile: Dockerfile
     image: paymentprocessor-python
-    container_name: paymentprocessor-python
     env_file:
       - .env
+    environment:
+      WORKER_MODE: main
     depends_on:
       - api
+    restart: unless-stopped
+
+  worker-retry:
+    build:
+      context: PaymentProcessor.Python
+      dockerfile: Dockerfile
+    image: paymentprocessor-python
+    container_name: paymentprocessor-retry
+    env_file:
+      - .env
+    environment:
+      WORKER_MODE: retry
+    depends_on:
+      - api
+    restart: unless-stopped

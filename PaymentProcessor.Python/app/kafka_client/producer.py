@@ -9,4 +9,5 @@ def create_producer(settings):
 		sasl_plain_username=settings["sasl_username"],
 		sasl_plain_password=settings["sasl_password"],
 		value_serializer=lambda v: json.dumps(v).encode("utf-8"),
+		key_serializer=lambda k: k.encode("utf-8") if isinstance(k, str) else k,
 	)

@@ -32,9 +32,10 @@ public class  UploadEventPublisher
             EventType = "PaymentCreated",
             Payload = JsonSerializer.Serialize(paymentDto)
         };
+        var key = $"{uploadId}:{payment.InvoiceNumber}";
 
         var messageJson = JsonSerializer.Serialize(kafkaUploadData);
-        await _kafkaProducer.SendMessageAsync(uploadId.ToString(), messageJson);
+        await _kafkaProducer.SendMessageAsync(key, messageJson);
     }
 
 }

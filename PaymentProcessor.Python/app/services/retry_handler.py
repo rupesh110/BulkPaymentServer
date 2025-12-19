@@ -7,12 +7,11 @@ from .helper import _retry_or_dlq
 
 MAX_RETRIES = 2
 
-def retry_payment(event, producer, retry_topic, dead_letter): ## TODO: integrate with real payment gateway
+def retry_payment(event, producer, retry_topic, dead_letter, key):
     payload = event.get("Payload")
 
     print("\nProcessing payment...", payload)
 
-  
     meta = event.get("Meta")
     if not isinstance(meta, dict):
         meta = {}
@@ -22,22 +21,14 @@ def retry_payment(event, producer, retry_topic, dead_letter): ## TODO: integrate
     meta.setdefault("LastFailureReason", None)
     meta.setdefault("CreatedAt", datetime.now(timezone.utc).isoformat())
 
-    
     if isinstance(payload, str):
         payload = json.loads(payload)
- 
 
-    key = str(payload["InvoiceNumber"]).encode()
+    time.sleep(random.uniform(0.5, 2.5))
 
-  
-    #delay = random.uniform(0.5, 2.5) 
-    #time.sleep(delay)
-
-
-    # FAKE REJECTION LOGIC
     amount = payload.get("Amount", 0)
 
-    # If amount > 15000 → auto reject
+    # Reject rule
     if amount > 15000:
         return _retry_or_dlq(
             producer,
@@ -45,23 +36,22 @@ def retry_payment(event, producer, retry_topic, dead_letter): ## TODO: integrate
             retry_topic,
             dead_letter,
             meta,
-            key,
+            key=key,
             reason="Amount exceeds limit"
         )
 
-    # Random failure 
-    if random.random() < 0.15:  
+    # Random failure
+    if random.random() < 0.15:
         return _retry_or_dlq(
             producer,
             event,
             retry_topic,
             dead_letter,
             meta,
-            key,
+            key=key,
             reason="Random simulated failure"
         )
 
-    # Otherwise APPROVE
     print("Payment APPROVED")
     return {
         "status": "APPROVED",

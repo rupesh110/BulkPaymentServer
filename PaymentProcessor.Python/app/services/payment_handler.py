@@ -5,10 +5,7 @@ from datetime import datetime, timezone
 
 from .helper import _retry_or_dlq
 
-MAX_RETRIES = 2
-
-
-def process_payment(event, producer, retry_topic, dead_letter, invalid_payment):
+def process_payment(event, producer, retry_topic, dead_letter, invalid_payment, key):
     payload = event.get("Payload")
 
     meta = event.get("Meta")
@@ -25,15 +22,16 @@ def process_payment(event, producer, retry_topic, dead_letter, invalid_payment):
             payload = json.loads(payload)
         except Exception as e:
             print("Failed to deserialize payload:", payload, e)
-
             meta["RetryCount"] += 1
             meta["LastFailureReason"] = "Invalid JSON"
 
-            key = str(payload.get("InvoiceNumber", "invalid")).encode()
-            producer.send(invalid_payment, value=event, key=key)
+            # INVALID PAYMENTS SHOULD STILL KEEP SAME KEY
+            producer.send(
+                invalid_payment,
+                value=event,
+                key=key.encode("utf-8")
+            )
             return {"status": "ERROR", "reason": "Invalid JSON"}
-
-    key = str(payload["InvoiceNumber"]).encode()
 
     print("\nReceived Event:")
     print("  Payload:", payload)
@@ -45,7 +43,6 @@ def process_payment(event, producer, retry_topic, dead_letter, invalid_payment):
 
     if amount > 15000:
         print(f"Payment REJECTED — Amount too high: {amount}")
-
         return _retry_or_dlq(
             producer,
             event,
@@ -58,7 +55,6 @@ def process_payment(event, producer, retry_topic, dead_letter, invalid_payment):
 
     if random.random() < 0.15:
         print("Payment FAILED — Random simulated failure")
-
         return _retry_or_dlq(
             producer,
             event,

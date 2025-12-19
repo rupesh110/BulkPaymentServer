@@ -1,6 +1,9 @@
 MAX_RETRIES = 2
 
 def _retry_or_dlq(producer, event, retry_topic, dead_letter, meta, key, reason):
+    if not key:
+        raise ValueError("Kafka key is required for retry/DLQ")
+
     meta["RetryCount"] += 1
     meta["LastFailureReason"] = reason
 

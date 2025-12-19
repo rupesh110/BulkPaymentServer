@@ -16,7 +16,8 @@ def load_settings():
             "sasl_password": os.environ["Kafka__SaslPassword"],
 
             # Main topic
-            "topic": os.environ["Kafka__TestTopic"],
+            #"topic": os.environ["Kafka__TestTopic"], #TODO: REMOVE LATER
+            "topic": os.environ["Kafka__PaymentTopic"],
 
             # Retry topics
             "topic_retry1": os.environ["Kafka__Retry1Topic"],
@@ -42,7 +43,8 @@ def load_settings():
         "sasl_password": secret_client.get_secret("Kafka-SaslPassword").value,
 
         # Main topic
-        "topic": secret_client.get_secret("Kafka-TestTopic").value,
+        #"topic": secret_client.get_secret("Kafka-TestTopic").value, #TODO: REMOVE LATER
+        "topic": secret_client.get_secret("Kafka-PaymentTopic").value,
 
         # Retry topics
         "topic_retry1": secret_client.get_secret("Kafka-Retry1Topic").value,
