@@ -379,3 +379,6 @@ PaymentProcessor.Python/venv/
 # Environment files
 .env
 *.env
+.env.secret
+.env.*
+*.env.*

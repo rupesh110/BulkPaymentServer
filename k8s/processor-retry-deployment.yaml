@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-processor-retry
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: payment-processor-retry
+  template:
+    metadata:
+      labels:
+        app: payment-processor-retry
+    spec:
+      containers:
+        - name: processor
+          image: payment-processor
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: WORKER_MODE
+              value: "retry"
+          envFrom:
+            - secretRef:
+                name: payment-secrets

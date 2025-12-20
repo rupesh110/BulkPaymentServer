@@ -4,9 +4,6 @@ services:
       context: .
       dockerfile: BulkPaymentServer.Api/Dockerfile
     image: bulkpayment-server
-    container_name: bulkpayment-api
-    ports:
-      - "8080:8080"
     env_file:
       - .env
 
@@ -19,8 +16,6 @@ services:
       - .env
     environment:
       WORKER_MODE: main
-    depends_on:
-      - api
     restart: unless-stopped
 
   worker-retry:
@@ -28,11 +23,17 @@ services:
       context: PaymentProcessor.Python
       dockerfile: Dockerfile
     image: paymentprocessor-python
-    container_name: paymentprocessor-retry
     env_file:
       - .env
     environment:
       WORKER_MODE: retry
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
     depends_on:
       - api
-    restart: unless-stopped
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
