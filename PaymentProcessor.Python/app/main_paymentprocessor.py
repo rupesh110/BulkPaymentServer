@@ -4,40 +4,50 @@ from services import process_payment
 from kafka_client import create_producer
 from datetime import datetime, timezone
 import os
+import time
+
 
 def run_worker():
-    print("Loading Kafka settings from Azure Key Vault...")
+    print("Main worker starting...")
 
-    settings = load_settings()
+    while True:
+        try:
+            print("Loading Kafka settings from Azure Key Vault...")
+            settings = load_settings()
 
-    consumer = create_consumer(settings)
-    producer = create_producer(settings)
+            consumer = create_consumer(settings)
+            producer = create_producer(settings)
 
-    retry_topic = settings["topic_retry1"]
-    dead_letter_topic = settings["topic_deadletter"]
-    invalid_payments_topic = settings["topic_invalidPayments"]
+            retry_topic = settings["topic_retry1"]
+            dead_letter_topic = settings["topic_deadletter"]
+            invalid_payments_topic = settings["topic_invalidPayments"]
 
-    print("Consumer connected. Listening for messages...")
+            print("Consumer connected. Listening for messages...")
 
-    for msg in consumer:
-        key = msg.key.decode("utf-8") if msg.key else None
+            for msg in consumer:
+                key = msg.key.decode("utf-8") if msg.key else None
 
-        print(
-            f"PID={os.getpid()} | "
-            f"Partition={msg.partition} | "
-            f"Key={key}"
-        )
+                print(
+                    f"PID={os.getpid()} | "
+                    f"Partition={msg.partition} | "
+                    f"Key={key}"
+                )
 
-        event = normalize_event(msg.value)
+                event = normalize_event(msg.value)
 
-        process_payment(
-            event,
-            producer,
-            retry_topic,
-            dead_letter_topic,
-            invalid_payments_topic,
-            key
-        )
+                process_payment(
+                    event,
+                    producer,
+                    retry_topic,
+                    dead_letter_topic,
+                    invalid_payments_topic,
+                    key
+                )
+
+        except Exception as e:
+            print("Main worker error, restarting loop in 5s:", e)
+            time.sleep(5)
+
 
 def normalize_event(event):
     meta = event.get("Meta")

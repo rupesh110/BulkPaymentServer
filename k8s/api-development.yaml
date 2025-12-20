@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bulkpayment-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bulkpayment-api
+  template:
+    metadata:
+      labels:
+        app: bulkpayment-api
+    spec:
+      containers:
+        - name: api
+          image: bulkpaymentserver-api
+          imagePullPolicy: IfNotPresent   
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: payment-secrets
