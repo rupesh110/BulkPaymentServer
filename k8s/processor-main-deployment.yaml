@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: processor
-          image: payment-processor
-          imagePullPolicy: IfNotPresent
+          image: bulkpaymentrcg.azurecr.io/payment-processor:1.0.0
+          imagePullPolicy: Always
           env:
             - name: WORKER_MODE
               value: "main"

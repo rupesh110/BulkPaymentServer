@@ -14,11 +14,7 @@ spec:
     spec:
       containers:
         - name: processor
-          image: payment-processor
-          imagePullPolicy: IfNotPresent
+          image: bulkpaymentrcg.azurecr.io/payment-processor:__TAG__
           env:
             - name: WORKER_MODE
               value: "retry"
-          envFrom:
-            - secretRef:
-                name: payment-secrets
