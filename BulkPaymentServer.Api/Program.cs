@@ -45,13 +45,15 @@ var app = builder.Build();
 app.UseSerilogRequestLogging();
 app.UseMiddleware<ExceptionMiddleware>();
 
-if (app.Environment.IsDevelopment())
+var enableSwagger = app.Configuration.GetValue<bool>("Swagger:Enabled");
+
+if (enableSwagger)
 {
-   app.UseSwagger();
-   app.UseSwaggerUI();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.MapControllers();
-app.MapGet("/", () => "Hello World! Test");
+app.MapGet("/", () => "Hello World! Test kubernetes");
 
 app.Run();

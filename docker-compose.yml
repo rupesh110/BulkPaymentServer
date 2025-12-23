@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: BulkPaymentServer.Api/Dockerfile
-    image: bulkpayment-server
+    image: api-server
     env_file:
       - .env
 
