@@ -174,6 +174,7 @@ Use Postman or Swagger UI to upload CSVs.
 - Serilog
 - Clean Architecture
 - C# 13 features
+- Python as microservice for payment processor
 
 ---
 
