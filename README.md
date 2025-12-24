@@ -3,7 +3,7 @@
 Bulk Payment Server is a clean-architecture .NET 9 backend API for processing bulk payment files.  
 Users upload CSV files, which are stored in Azure Blob Storage, parsed into strongly typed payment records, and stored in Azure SQL Database.
 
-This project demonstrates domain-driven design (DDD), layered architecture, and cloud service integration.
+This project demonstrates domain-driven design (DDD), layered architecture, and cloud service integration as well.
 
 ---
 
