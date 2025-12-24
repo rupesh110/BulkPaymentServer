@@ -1,98 +1,101 @@
 trigger:
-    - main
+- main
 
-variables: 
-    acrName: bulkpaymentrcg.azurecr.io
-    resourceGroup: bulkpayment-rcg-ks-dev
-    aksCluster: bulkpayment-kbc-cl1
+variables:
+  acrLoginServer: bulkpaymentrcg.azurecr.io
+  resourceGroup: bulkpayment-rcg-ks-dev
+  aksCluster: bulkpayment-kbs-cl1
 
-    apiImageName: bulkpayment-api
-    processorImageName: bulkpayment-processor
+  apiImageName: bulkpayment-api
+  processorImageName: payment-processor
 
+# AGENT POOL (SELF-HOSTED)
 pool:
-    vmImage: ubuntu-latest
+  name: bulkpaymentagentpool
 
+# BUILD STAGE
 stages:
-    #Build Stage
-    - stage: Build
-      displayName: Build and Push Docker Images
-      jobs:
-      - job: BuildImages
-        steps: 
-        - checkout: self
+- stage: Build
+  displayName: Build and Push Docker Images
+  jobs:
+  - job: BuildImages
+    displayName: Build Images
+    steps:
+    - checkout: self
 
-        #Builds API Image
-        - task : Docker@2
-          displayName: Build and Push API Image
-          inputs:
-            containerRegistry: bulkpaymentrcg-acr-connection
-            repository: $(apiImageName)
-            command: buildAndPush
-            Dockerfile: BulkPayment.Api/Dockerfile
-            tags: |
-              $(Build.BuildId)
+    # Build & push API image
+    - task: Docker@2
+      displayName: Build and Push API Image
+      inputs:
+        containerRegistry: bulkpaymentrcg-acr-connection
+        repository: $(apiImageName)
+        command: buildAndPush
+        Dockerfile: BulkPaymentServer.Api/Dockerfile
+        buildContext: .
+        tags: |
+          $(Build.BuildId)
 
-        #Builds Processor Image
-        - task : Docker@2
-          displayName: Build and Push Processor Image
-          inputs:
-            containerRegistry: bulkpaymentrcg-acr-connection
-            repository: $(processorImageName)
-            command: buildAndPush
-            Dockerfile: BulkPayment.Processor/Dockerfile
-            tags: |
-              $(Build.BuildId)
+    # Build & push Processor image
+    - task: Docker@2
+      displayName: Build and Push Processor Image
+      inputs:
+        containerRegistry: bulkpaymentrcg-acr-connection
+        repository: $(processorImageName)
+        command: buildAndPush
+        Dockerfile: PaymentProcessor.Python/Dockerfile
+        tags: |
+          $(Build.BuildId)
 
-    #Deploy
-    - stage: Deploy
-      displayName: Deploy to AKS
-      dependsOn: Build
-      jobs:
-      - deployment: DeployToAKS
-        steps:
-        - checkout: self
-  
-        #Login
-        - task: Kubernetes@1
-          displayName: Login to AKS
-          inputs:
-            connectionType: Azure Resource Manager
-            azureSubscriptionEndpoint: bulkpaymentrcg-aks-connection
-            azureResourceGroup: $(resourceGroup)
-            kubernetesCluster: $(aksCluster)
-            command: login
+# DEPLOY STAGE
+- stage: Deploy
+  displayName: Deploy to AKS
+  dependsOn: Build
+  jobs:
+  - job: DeployToAKS
+    displayName: Deploy workloads
+    steps:
+    - checkout: self
 
-        #DEPLOY
-        - task : KubernetesManifest@1
-          displayName: Deploy API
-          inputs:
-            action: deploy
-            kubernetesServiceConnection: bulkpaymentrcg-aks-
-            manifests: |
-              k8s/bulkpayment-api-deployment.yaml
-              k8s/bulkpayment-api-service.yaml
-            containers: |
-              $(acrLoginServer)/$(apiImageName):$(Build.BuildId)
-    
-        #DEPLOY PROCESSOR main
-        - task : KubernetesManifest@1
-          displayName: Deploy Processor Main
-          inputs:
-            action: deploy
-            kubernetesServiceConnection: bulkpaymentrcg-aks-connection
-            manifests: |
-                k8s/bulkpayment-processor-deployment.yaml
-            containers: |
-                $(acrLoginServer)/$(processorImageName):$(Build.BuildId)
+    # Login to AKS (Azure Resource Manager connection)
+    - task: Kubernetes@1
+      displayName: Login to AKS
+      inputs:
+        connectionType: Azure Resource Manager
+        azureSubscriptionEndpoint: bulkpaymentrcg-aks-connection
+        azureResourceGroup: $(resourceGroup)
+        kubernetesCluster: $(aksCluster)
+        command: login
 
-        #DEPLOY PROCESSOR retry
-        - task : KubernetesManifest@1
-          displayName: Deploy Processor Retry
-          inputs:
-            action: deploy
-            kubernetesServiceConnection: bulkpaymentrcg-aks-connection
-            manifests: |
-                k8s/bulkpayment-retry-deployment.yaml
-            containers: |
-                $(acrLoginServer)/$(processorImageName):$(Build.BuildId)
-           
+    # Deploy API (Kubernetes service connection)
+    - task: KubernetesManifest@1
+      displayName: Deploy API
+      inputs:
+        action: deploy
+        kubernetesServiceConnection: bulkpaymentrcg-aks-k8s
+        manifests: |
+          k8s/api-deployment.yaml
+          k8s/api-service.yaml
+        containers: |
+          $(acrLoginServer)/$(apiImageName):$(Build.BuildId)
+
+    # Deploy Processor (main)
+    - task: KubernetesManifest@1
+      displayName: Deploy Processor Main
+      inputs:
+        action: deploy
+        kubernetesServiceConnection: bulkpaymentrcg-aks-k8s
+        manifests: |
+          k8s/processor-main-deployment.yaml
+        containers: |
+          $(acrLoginServer)/$(processorImageName):$(Build.BuildId)
+
+    # Deploy Processor (retry)
+    - task: KubernetesManifest@1
+      displayName: Deploy Processor Retry
+      inputs:
+        action: deploy
+        kubernetesServiceConnection: bulkpaymentrcg-aks-k8s
+        manifests: |
+          k8s/processor-retry-deployment.yaml
+        containers: |
+          $(acrLoginServer)/$(processorImageName):$(Build.BuildId)
