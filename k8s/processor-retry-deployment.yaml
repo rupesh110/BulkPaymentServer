@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: payment-processor-retry
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: payment-processor-retry
