@@ -41,7 +41,7 @@ Stores parsed payment records:
 - Amount  
 - CreatedAt  
 - Status  
-- UploadId (foreign key)
+- UploadId
 
 ### **4. Clean Architecture**
 Solution is structured into four independent layers:
