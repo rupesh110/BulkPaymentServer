@@ -41,7 +41,7 @@ Stores parsed payment records:
 - Amount  
 - CreatedAt  
 - Status  
-- UploadId
+- UploadId (key)
 
 ### **4. Clean Architecture**
 Solution is structured into four independent layers:
@@ -174,11 +174,7 @@ Use Postman or Swagger UI to upload CSVs.
 - Serilog
 - Clean Architecture
 - C# 13 features
-<<<<<<< HEAD
-- Python as microservice for payment
-=======
 - Python as microservice for payment and retry processor as a consumer
->>>>>>> 9f17fd7 (merge conflict)
 
 ---
 
