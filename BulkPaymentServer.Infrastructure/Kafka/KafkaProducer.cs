@@ -27,7 +27,7 @@ public class KafkaProducer : IKafkaProducer
         };
 
         _topic = configuration["Kafka:PaymentTopic"]
-            ?? throw new InvalidOperationException("Kafka:TestTopic is not configured");
+            ?? throw new InvalidOperationException("Kafka:PaymentTopic is not configured");
 
         _producer = new ProducerBuilder<string, string>(config).Build();
     }
