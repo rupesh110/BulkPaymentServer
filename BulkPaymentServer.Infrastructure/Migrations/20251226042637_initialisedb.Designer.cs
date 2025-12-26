@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BulkPaymentServer.Infrastructure.Migrations
 {
     [DbContext(typeof(BulkPaymentDbContext))]
-    [Migration("20251208053058_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251226042637_initialisedb")]
+    partial class initialisedb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
