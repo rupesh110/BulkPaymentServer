@@ -19,4 +19,5 @@ spec:
             - name: WORKER_MODE
               value: "retry"
           envFrom:
-            - name: payment-secrets
+            - secretRef:
+                name: payment-secrets
