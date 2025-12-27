@@ -66,6 +66,16 @@ stages:
         kubernetesCluster: $(aksCluster)
         command: login
 
+    # Delete API Service (clean old invalid ports)
+    - task: Kubernetes@1
+      displayName: Delete API Service (if exists)
+      inputs:
+        connectionType: Kubernetes Service Connection
+        kubernetesServiceEndpoint: bulkpaymentrcg-aks-k8s
+        command: delete
+        arguments: service bulkpayment-api --ignore-not-found
+        namespace: default
+
     # Deploy API (Kubernetes service connection)
     - task: KubernetesManifest@1
       displayName: Deploy API

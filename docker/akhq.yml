@@ -1,0 +1,5 @@
+akhq:
+  connections:
+    local-kafka:
+      properties:
+        bootstrap.servers: "host.docker.internal:9092"
