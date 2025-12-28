@@ -16,11 +16,16 @@ public static class InfrastructureServiceRegistration
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
         //Blob Storage
-        string connectionString = configuration["BlobStorageConnectionString"];
+        string connectionString = configuration["BlobStorage:ConnectionString"];
+        if (string.IsNullOrWhiteSpace(connectionString)) {
+            throw new InvalidOperationException(
+                "BlobStorage: Connection string is missing"
+                );
+        }
         services.AddSingleton(new BlobServiceClient(connectionString));
 
         //EF Core DbContext
-        string dbConnectionString = configuration["SqlConnectionString"]; 
+        string dbConnectionString = configuration["Sql:ConnectionString"]; 
 
 
         //Kafka 
