@@ -7,7 +7,7 @@ Provided by:
 
 Consumed at runtime by:
 - BulkPayment.Api
-- PaymentProcessor.Worker
+- PaymentProcessor.Python
 
 Accessed via (code layer):
 - BulkPayment.Infrastructure (Kafka client implementations)
@@ -51,6 +51,7 @@ Provided by:
 
 Consumed at runtime by:
 - BulkPayment.Api
+- PaymentProcessor.Python
 
 Accessed via (code layer):
 - BulkPayment.Infrastructure (EF Core repositories)

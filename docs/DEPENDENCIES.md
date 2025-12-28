@@ -13,4 +13,7 @@
 - Kafka
   - Topic: payments (consume)
   - Topic: payments-retry (consume)
-  - Topic: payments-dlq (produce)
+  - Topic: payments-dlq(produce)
+
+- SQL Database #TODO
+	- Purpose: follows acid principle as in financial services 

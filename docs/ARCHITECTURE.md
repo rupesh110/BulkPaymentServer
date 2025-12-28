@@ -8,7 +8,7 @@
 		Kafka | Blog storage | Azure sql
 				    |
 					V
-				payment processor
+				payment processor (Worker)
 				    |
 					V
 			---- ---------
