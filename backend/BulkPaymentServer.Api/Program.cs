@@ -33,6 +33,10 @@ builder.Configuration.AddJsonFile("serilog.json", optional: false, reloadOnChang
 //Azure key vault
 var keyVaultUrl = builder.Configuration["KeyVault:Url"];
 Console.WriteLine($"KeyVaultUrl = {keyVaultUrl}");
+
+var dburl = builder.Configuration["Sql:ConnectionString"];
+Console.WriteLine($"db url = { dburl}");
+
 if (
     Uri.TryCreate(keyVaultUrl, UriKind.Absolute, out var vaultUri) 
     && !builder.Environment.IsDevelopment()

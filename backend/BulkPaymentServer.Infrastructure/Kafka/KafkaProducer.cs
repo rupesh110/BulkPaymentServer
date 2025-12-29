@@ -14,17 +14,27 @@ public class KafkaProducer : IKafkaProducer
         var config = new ProducerConfig
         {
             BootstrapServers = configuration["Kafka:BootstrapServers"],
+            Acks = Acks.All,
 
-            SecurityProtocol = SecurityProtocol.SaslSsl,
-            SaslMechanism = SaslMechanism.Plain,
-
-            SaslUsername = configuration["Kafka:SaslUsername"],
-            SaslPassword = configuration["Kafka:SaslPassword"],
-
-            SslEndpointIdentificationAlgorithm = SslEndpointIdentificationAlgorithm.Https,
-            EnableSslCertificateVerification = true,
-            Acks = Acks.All
+            //default for local
+            SecurityProtocol = SecurityProtocol.Plaintext
         };
+
+        var saslUsername = configuration["Kafka:SaslUsername"];
+        var saslPassword = configuration["Kafka:SaslPassword"];
+
+        // enable SASL only when creds exist
+        if (!string.IsNullOrWhiteSpace(saslUsername))
+        {
+            config.SecurityProtocol = SecurityProtocol.SaslSsl;
+            config.SaslMechanism = SaslMechanism.Plain;
+            config.SaslUsername = saslUsername;
+            config.SaslPassword = saslPassword;
+
+            config.SslEndpointIdentificationAlgorithm =
+                SslEndpointIdentificationAlgorithm.Https;
+            config.EnableSslCertificateVerification = true;
+        }
 
         _topic = configuration["Kafka:PaymentTopic"]
             ?? throw new InvalidOperationException("Kafka:PaymentTopic is not configured");
