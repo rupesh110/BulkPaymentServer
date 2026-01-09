@@ -1,13 +1,29 @@
 from kafka import KafkaProducer
-import json
+from utils import safe_json
 
 def create_producer(settings):
-	return KafkaProducer(
-		bootstrap_servers=settings["bootstrap_servers"],
-		security_protocol="SASL_SSL",
-		sasl_mechanism="PLAIN",
-		sasl_plain_username=settings["sasl_username"],
-		sasl_plain_password=settings["sasl_password"],
-		value_serializer=lambda v: json.dumps(v).encode("utf-8"),
-		key_serializer=lambda k: k.encode("utf-8") if isinstance(k, str) else k,
-	)
+    common_args = dict(
+        bootstrap_servers=settings["bootstrap_servers"],
+        value_serializer=lambda v: safe_json(v, to_bytes=True),
+        retries=5,
+        linger_ms=10,
+    )
+
+    if settings["use_sasl"]:
+        producer = KafkaProducer(
+            security_protocol="SASL_SSL",
+            sasl_mechanism="PLAIN",
+            sasl_plain_username=settings["sasl_username"],
+            sasl_plain_password=settings["sasl_password"],
+            **common_args
+        )
+    else:
+        producer = KafkaProducer(**common_args)
+
+    print(
+        f"Kafka producer connected | "
+        f"bootstrap={settings['bootstrap_servers']} | "
+        f"sasl={settings['use_sasl']}"
+    )
+
+    return producer

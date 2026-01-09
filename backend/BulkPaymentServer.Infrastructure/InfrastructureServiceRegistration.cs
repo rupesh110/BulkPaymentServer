@@ -25,7 +25,8 @@ public static class InfrastructureServiceRegistration
         services.AddSingleton(new BlobServiceClient(connectionString));
 
         //EF Core DbContext
-        string dbConnectionString = configuration["Sql:ConnectionString"]; 
+        string dbConnectionString = configuration["Sql:ConnectionString"];
+        Console.WriteLine($"connection db , {dbConnectionString}");
 
 
         //Kafka 
