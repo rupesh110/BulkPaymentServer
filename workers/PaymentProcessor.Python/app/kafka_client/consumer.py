@@ -1,19 +1,12 @@
 from kafka import KafkaConsumer
 from utils import safe_json
 
+
 def create_consumer(settings):
-    bootstrap_servers = settings["bootstrap_servers"]
-    api_key = settings["sasl_username"]
-    api_secret = settings["sasl_password"]
     topic = settings["topic"]
 
-    consumer = KafkaConsumer(
-        topic,
-        bootstrap_servers=bootstrap_servers,
-        security_protocol="SASL_SSL",
-        sasl_mechanism="PLAIN",
-        sasl_plain_username=api_key,
-        sasl_plain_password=api_secret,
+    common_args = dict(
+        bootstrap_servers=settings["bootstrap_servers"],
         auto_offset_reset="earliest",
         enable_auto_commit=True,
         value_deserializer=lambda m: safe_json(m),
@@ -21,6 +14,25 @@ def create_consumer(settings):
         auto_commit_interval_ms=5000,
     )
 
-    print(f"Kafka consumer connected to topic '{topic}'")
+    if settings["use_sasl"]:
+        consumer = KafkaConsumer(
+            topic,
+            security_protocol="SASL_SSL",
+            sasl_mechanism="PLAIN",
+            sasl_plain_username=settings["sasl_username"],
+            sasl_plain_password=settings["sasl_password"],
+            **common_args
+        )
+    else:
+        consumer = KafkaConsumer(
+            topic,
+            **common_args
+        )
+
+    print(
+        f"Kafka consumer connected | "
+        f"bootstrap={settings['bootstrap_servers']} | "
+        f"sasl={settings['use_sasl']}"
+    )
 
     return consumer

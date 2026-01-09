@@ -1,19 +1,23 @@
-﻿from config import load_settings
-from kafka_client import create_consumer
-from services import process_payment
-from kafka_client import create_producer
-from datetime import datetime, timezone
+﻿import logging
 import os
 import time
+from datetime import datetime, timezone
+
+from config import load_settings
+from kafka_client import create_consumer, create_producer
+from services import process_payment
+from exceptions import BusinessHandled  # wherever you defined it
+
+logger = logging.getLogger(__name__)
 
 
 def run_worker():
-    print("Main worker starting...")
+    logger.info("Main worker starting")
 
     while True:
         try:
-            print("Loading Kafka settings from Azure Key Vault...")
             settings = load_settings()
+            logger.info("Kafka settings loaded", extra={"bootstrap": settings["bootstrap_servers"]})
 
             consumer = create_consumer(settings)
             producer = create_producer(settings)
@@ -22,30 +26,40 @@ def run_worker():
             dead_letter_topic = settings["topic_deadletter"]
             invalid_payments_topic = settings["topic_invalidPayments"]
 
-            print("Consumer connected. Listening for messages...")
+            logger.info("Consumer connected. Listening for messages")
 
             for msg in consumer:
                 key = msg.key.decode("utf-8") if msg.key else None
 
-                print(
-                    f"PID={os.getpid()} | "
-                    f"Partition={msg.partition} | "
-                    f"Key={key}"
+                logger.info(
+                    "Message received",
+                    extra={
+                        "pid": os.getpid(),
+                        "partition": msg.partition,
+                        "key": key,
+                    },
                 )
 
-                event = normalize_event(msg.value)
+                try:
+                    event = normalize_event(msg.value)
 
-                process_payment(
-                    event,
-                    producer,
-                    retry_topic,
-                    dead_letter_topic,
-                    invalid_payments_topic,
-                    key
-                )
+                    process_payment(
+                        event,
+                        producer,
+                        retry_topic,
+                        dead_letter_topic,
+                        invalid_payments_topic,
+                        key,
+                    )
+
+                except BusinessHandled as e:
+                    # Expected business outcome (retry / DLQ)
+                    logger.warning("Business flow handled", extra={"reason": str(e)})
+                    continue
 
         except Exception as e:
-            print("Main worker error, restarting loop in 5s:", e)
+            # Infrastructure / unexpected error
+            logger.exception("INFRA error, restarting worker in 5s")
             time.sleep(5)
 
 
@@ -53,6 +67,7 @@ def normalize_event(event):
     meta = event.get("Meta")
 
     if not isinstance(meta, dict):
+        logger.debug("Meta missing or invalid, initializing")
         meta = {}
         event["Meta"] = meta
 

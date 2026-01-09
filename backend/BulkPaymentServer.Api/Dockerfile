@@ -5,16 +5,17 @@ EXPOSE 8080
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
-COPY BulkPaymentServer.sln .
-COPY BulkPaymentServer.Api/BulkPaymentServer.Api.csproj BulkPaymentServer.Api/
-COPY BulkPaymentServer.Application/BulkPaymentServer.Application.csproj BulkPaymentServer.Application/
-COPY BulkPaymentServer.Domain/BulkPaymentServer.Domain.csproj BulkPaymentServer.Domain/
-COPY BulkPaymentServer.Infrastructure/BulkPaymentServer.Infrastructure.csproj BulkPaymentServer.Infrastructure/
+COPY backend/BulkPaymentServer.sln .
+COPY backend/BulkPaymentServer.Api/BulkPaymentServer.Api.csproj BulkPaymentServer.Api/
+COPY backend/BulkPaymentServer.Application/BulkPaymentServer.Application.csproj BulkPaymentServer.Application/
+COPY backend/BulkPaymentServer.Domain/BulkPaymentServer.Domain.csproj BulkPaymentServer.Domain/
+COPY backend/BulkPaymentServer.Infrastructure/BulkPaymentServer.Infrastructure.csproj BulkPaymentServer.Infrastructure/
 
 RUN dotnet restore BulkPaymentServer.Api/BulkPaymentServer.Api.csproj
 
-COPY . .
-WORKDIR /src/BulkPaymentServer.Api
+COPY backend/. backend/
+
+WORKDIR /src/backend/BulkPaymentServer.Api
 RUN dotnet publish -c Release -o /app/publish
 
 FROM base AS final

@@ -3,7 +3,7 @@ import random
 import time
 from datetime import datetime, timezone
 
-from .helper import _retry_or_dlq
+from services import helper
 
 MAX_RETRIES = 2
 
@@ -29,7 +29,7 @@ def retry_payment(event, producer, retry_topic, dead_letter, key):
     amount = payload.get("Amount", 0)
 
     # Reject rule
-    if amount > 15000:
+    if amount > 25000:
         return _retry_or_dlq(
             producer,
             event,

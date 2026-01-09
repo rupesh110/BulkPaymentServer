@@ -1,13 +1,22 @@
 ﻿import json
 
-import json
+def safe_json(value, to_bytes=False):
+    """
+    - Consumer: bytes -> dict
+    - Producer: dict -> bytes
+    """
+    if value is None:
+        return None
 
-def safe_json(message_bytes):
-    """Safely deserializes Kafka bytes → Python dict"""
-    try:
-        return json.loads(message_bytes.decode("utf-8"))
-    except:
-        return {
-            "_raw": message_bytes.decode("utf-8", errors="ignore"),
-            "_error": "Failed to deserialize JSON"
-        }
+    # Kafka consumer path (bytes -> dict)
+    if isinstance(value, (bytes, bytearray)):
+        try:
+            return json.loads(value.decode("utf-8"))
+        except Exception:
+            return value.decode("utf-8", errors="ignore")
+
+    # Kafka producer path (dict -> bytes)
+    if to_bytes:
+        return json.dumps(value).encode("utf-8")
+
+    return value

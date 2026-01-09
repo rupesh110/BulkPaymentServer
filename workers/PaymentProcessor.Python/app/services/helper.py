@@ -1,6 +1,11 @@
+import logging
+
+logger = logging.getLogger(__name__)
+
 MAX_RETRIES = 2
 
-def _retry_or_dlq(producer, event, retry_topic, dead_letter, meta, key, reason):
+
+def retry_or_dlq(producer, event, retry_topic, dead_letter, meta, key, reason):
     if not key:
         raise ValueError("Kafka key is required for retry/DLQ")
 
@@ -9,11 +14,19 @@ def _retry_or_dlq(producer, event, retry_topic, dead_letter, meta, key, reason):
 
     retry_count = meta["RetryCount"]
 
+    logger.debug(
+        "Retry decision",
+        extra={
+            "retryCount": retry_count,
+            "maxRetries": MAX_RETRIES,
+            "key": key,
+            "reason": reason,
+        },
+    )
+
     if retry_count > MAX_RETRIES:
-        print(f"Sending to DLQ after {retry_count} attempts")
-        producer.send(dead_letter, value=event, key=key)
+        producer.send(dead_letter, value=event, key=key.encode("utf-8"))
         return {"status": "DEAD", "retryCount": retry_count}
 
-    print(f"Retrying payment (attempt {retry_count})")
-    producer.send(retry_topic, value=event, key=key)
+    producer.send(retry_topic, value=event, key=key.encode("utf-8"))
     return {"status": "RETRYING", "retryCount": retry_count}
